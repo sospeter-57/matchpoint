@@ -1,0 +1,21 @@
+package config
+
+import (
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+)
+
+func LoadEnvFile() {
+	if err := godotenv.Load(); err != nil {
+		log.Println("no .env file found, relying on system environment variables")
+	}
+}
+
+func getEnv(key, fallback string) string {
+	if value := os.Getenv(key); value != "" {
+		return value
+	}
+	return fallback
+}

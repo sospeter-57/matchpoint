@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS user_profiles (
+    user_id UUID PRIMARY KEY REFERENCES users (id) ON DELETE CASCADE,
+    bio TEXT NOT NULL DEFAULT '',
+    skills TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[],
+    experience TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[],
+    resume_url TEXT NOT NULL DEFAULT '',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
